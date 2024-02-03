@@ -22,7 +22,7 @@ namespace Accountimg.App
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            this.Text = (typeId == 1) ? "Incomes Report" : "Expenses Report";
+            this.Text = (typeId == 1) ? "Incomes Report" : "Expenses  Report";
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -77,7 +77,10 @@ namespace Accountimg.App
                 int currentId = int.Parse(dgvReport.CurrentRow.Cells[0].Value.ToString());
                 frmNewTransaction frm = new frmNewTransaction();
                 frm.currentId = currentId;
-                frm.ShowDialog();
+                if(frm.ShowDialog()==DialogResult.OK)
+                {
+                    Filter();
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Accountimg.App
 {
     public partial class frmNewTransaction : Form
     {
-        UnitOfWork db = new UnitOfWork();
+        private UnitOfWork db;
         public int currentId=0;
         public frmNewTransaction()
         {
@@ -23,6 +23,7 @@ namespace Accountimg.App
 
         private void frmNewTransaction_Load(object sender, EventArgs e)
         {
+            db = new UnitOfWork();
             dgvCustomers.AutoGenerateColumns = false;
             //var res= db.CustomerRepository.GetCustomersByName(); ;
             dgvCustomers.DataSource = db.CustomerRepository.GetCustomersByName();
@@ -31,15 +32,19 @@ namespace Accountimg.App
                 var currentTransaction=db.AccountingRepository.GetById(currentId);
                 txtAmount.Value= currentTransaction.Amount;
                 txtDescription.Text = currentTransaction.Description;
+                txtName.Text = db.CustomerRepository.GetCustomerNameById(currentTransaction.CustomerID);
                 if (currentTransaction.TypeID==1)
                 {
                     rbIncome.Checked = true;
                 }
                 else
                 {
-                    rbExpense
+                    rbExpense.Checked = true;
                 }
+                this.Text="Edit Transaction";
+                btnSave.Text="Edit";
             }
+            db.Dispose();
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -57,7 +62,8 @@ namespace Accountimg.App
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (BaseValidator.IsFormValid(this.components))
-            { 
+            {
+                db = new UnitOfWork();
                 if (rbIncome.Checked || rbExpense.Checked)
                 {
                 Accounting.DataLayer.Accounting transaction = new Accounting.DataLayer.Accounting()
@@ -68,15 +74,28 @@ namespace Accountimg.App
                     DateTime= DateTime.Now,
                     Description=txtDescription.Text
                 };
-                db.AccountingRepository.Insert(transaction);
-                db.Save();
-                DialogResult = DialogResult.OK;
+                if (currentId==0)
+                {
+                    db.AccountingRepository.Insert(transaction);
                 }
                 else
                 {
-                MessageBox.Show("Please Select Transaction Type!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    transaction.ID = currentId;
+                    db.AccountingRepository.Update(transaction);
                 }
+
+                
+                db.Save();
+                db.Dispose();
+                DialogResult = DialogResult.OK;
+                    
+            }
+            else
+            {
+                MessageBox.Show("Please Select Transaction Type!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+    }
     }
 }
