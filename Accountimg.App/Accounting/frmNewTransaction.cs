@@ -15,6 +15,7 @@ namespace Accountimg.App
     public partial class frmNewTransaction : Form
     {
         UnitOfWork db = new UnitOfWork();
+        public int currentId=0;
         public frmNewTransaction()
         {
             InitializeComponent();
@@ -25,6 +26,20 @@ namespace Accountimg.App
             dgvCustomers.AutoGenerateColumns = false;
             //var res= db.CustomerRepository.GetCustomersByName(); ;
             dgvCustomers.DataSource = db.CustomerRepository.GetCustomersByName();
+            if (currentId != 0)
+            {
+                var currentTransaction=db.AccountingRepository.GetById(currentId);
+                txtAmount.Value= currentTransaction.Amount;
+                txtDescription.Text = currentTransaction.Description;
+                if (currentTransaction.TypeID==1)
+                {
+                    rbIncome.Checked = true;
+                }
+                else
+                {
+                    rbExpense
+                }
+            }
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)

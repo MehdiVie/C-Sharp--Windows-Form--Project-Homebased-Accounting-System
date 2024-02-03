@@ -76,6 +76,7 @@ namespace Accountimg.App
             this.btnEditTransaction.Size = new System.Drawing.Size(80, 94);
             this.btnEditTransaction.Text = "Edit Trans.";
             this.btnEditTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditTransaction.Click += new System.EventHandler(this.btnEditTransaction_Click);
             // 
             // btnDeleteTransaction
             // 

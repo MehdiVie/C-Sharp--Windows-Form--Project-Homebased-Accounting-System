@@ -69,5 +69,16 @@ namespace Accountimg.App
                 }
             }
         }
+
+        private void btnEditTransaction_Click(object sender, EventArgs e)
+        {
+            if (dgvReport.CurrentRow != null)
+            {
+                int currentId = int.Parse(dgvReport.CurrentRow.Cells[0].Value.ToString());
+                frmNewTransaction frm = new frmNewTransaction();
+                frm.currentId = currentId;
+                frm.ShowDialog();
+            }
+        }
     }
 }
