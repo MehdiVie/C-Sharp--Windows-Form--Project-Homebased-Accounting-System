@@ -40,6 +40,20 @@ namespace Accounting.DataLayer.Context
             }
        }
 
+        private GenericRepository<Auth> _authRepository;
+
+        public GenericRepository<Auth> AuthRepository
+        {
+            get
+            {
+                if (_authRepository == null)
+                {
+                    _authRepository = new GenericRepository<Auth>(db);
+                }
+                return _authRepository;
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();

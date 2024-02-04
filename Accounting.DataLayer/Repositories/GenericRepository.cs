@@ -52,7 +52,7 @@ namespace Accounting.DataLayer.Repositories
             {
                 query = query.Where(where);
             }
-
+            
             return query.ToList();
         }
 

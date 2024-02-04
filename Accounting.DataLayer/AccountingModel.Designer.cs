@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\C# Basic\Accountimg\Accounting.DataLayer\AccountingModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\zhila\Source\Repos\MehdiVie\C-Sharp-Project-1\Accounting.DataLayer\AccountingModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

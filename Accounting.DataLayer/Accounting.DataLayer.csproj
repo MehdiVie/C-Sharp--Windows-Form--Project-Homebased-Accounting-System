@@ -71,6 +71,9 @@
     <Compile Include="AccountingTypes.cs">
       <DependentUpon>AccountingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Auth.cs">
+      <DependentUpon>AccountingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Customers.cs">
       <DependentUpon>AccountingModel.tt</DependentUpon>
