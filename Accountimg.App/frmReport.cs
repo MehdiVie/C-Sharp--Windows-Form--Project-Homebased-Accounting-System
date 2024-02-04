@@ -49,6 +49,7 @@ namespace Accountimg.App
             {
                 
                 List <Accounting.DataLayer.Accounting> result = new List<Accounting.DataLayer.Accounting>();
+
                 if ((int)cbCustomer.SelectedValue != 0)
                 {
                     int customerId = int.Parse(cbCustomer.SelectedValue.ToString());
@@ -58,8 +59,21 @@ namespace Accountimg.App
                 {
                     result.AddRange(db.AccountingRepository.Get(a => a.TypeID == typeId));
                 }
+
                 DateTime? startDate;
                 DateTime? endDate;
+
+                if (txtFromDate.Text != "  .  .") 
+                {
+                    startDate = Convert.ToDateTime(txtFromDate.Text);
+                    result=result.Where(c=>c.DateTime>=startDate).ToList();
+                }
+                if (txtToDate.Text != "  .  .")
+                {
+                    endDate = Convert.ToDateTime(txtToDate.Text);
+                    result=result.Where(c => c.DateTime <= endDate).ToList();
+                }
+
                 string customerName = "";
                 //dgvReport.AutoGenerateColumns = false;
                 //dgvReport.DataSource = result;
@@ -110,9 +124,6 @@ namespace Accountimg.App
             }
         }
 
-        private void cbCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -138,16 +138,17 @@ namespace Accountimg.App
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(413, 19);
-            this.txtToDate.Mask = "00.00.0000";
+            this.txtToDate.Location = new System.Drawing.Point(413, 17);
+            this.txtToDate.Mask = "00,00,0000";
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(100, 23);
             this.txtToDate.TabIndex = 7;
+            
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(392, 23);
+            this.label3.Location = new System.Drawing.Point(383, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 17);
             this.label3.TabIndex = 6;
@@ -161,12 +162,12 @@ namespace Accountimg.App
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(169, 24);
             this.cbCustomer.TabIndex = 5;
-            this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
+            
             // 
             // txtFromDate
             // 
             this.txtFromDate.Location = new System.Drawing.Point(275, 17);
-            this.txtFromDate.Mask = "00.00.0000";
+            this.txtFromDate.Mask = "00,00,0000";
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.Size = new System.Drawing.Size(100, 23);
             this.txtFromDate.TabIndex = 4;
