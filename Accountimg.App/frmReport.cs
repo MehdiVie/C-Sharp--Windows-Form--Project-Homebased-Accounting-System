@@ -1,5 +1,6 @@
 ﻿using Accounting.DataLayer;
 using Accounting.DataLayer.Context;
+using Accounting.ViewModels.Customers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,20 @@ namespace Accountimg.App
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            this.Text = (typeId == 1) ? "Incomes Report" : "Expenses  Report";
+            this.Text = (typeId == 1) ? "Incomes Report" : "Expenses Report";
+            using(UnitOfWork db= new UnitOfWork())
+            {
+                List<ListCustomerViewModel> list = new List<ListCustomerViewModel>();
+                list.Add(new ListCustomerViewModel()
+                {
+                    FullName = "Select Customer",
+                    CustomerID = 0
+                });
+                list.AddRange(db.CustomerRepository.GetCustomersByName());
+                cbCustomer.DataSource = list;
+                cbCustomer.DisplayMember = "FullName";
+                cbCustomer.ValueMember = "CustomerID";
+            }
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -33,7 +47,19 @@ namespace Accountimg.App
         {
             using(UnitOfWork db=new UnitOfWork())
             {
-                var result = db.AccountingRepository.Get(a => a.TypeID == typeId);
+                
+                List <Accounting.DataLayer.Accounting> result = new List<Accounting.DataLayer.Accounting>();
+                if ((int)cbCustomer.SelectedValue != 0)
+                {
+                    int customerId = int.Parse(cbCustomer.SelectedValue.ToString());
+                    result.AddRange(db.AccountingRepository.Get(a=> a.TypeID==typeId && a.CustomerID==customerId));
+                }
+                else
+                {
+                    result.AddRange(db.AccountingRepository.Get(a => a.TypeID == typeId));
+                }
+                DateTime? startDate;
+                DateTime? endDate;
                 string customerName = "";
                 //dgvReport.AutoGenerateColumns = false;
                 //dgvReport.DataSource = result;
@@ -82,6 +108,11 @@ namespace Accountimg.App
                     Filter();
                 }
             }
+        }
+
+        private void cbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

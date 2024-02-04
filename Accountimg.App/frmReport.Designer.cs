@@ -128,7 +128,7 @@ namespace Accountimg.App
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(519, 20);
+            this.btnFilter.Location = new System.Drawing.Point(519, 17);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 8;
@@ -155,11 +155,13 @@ namespace Accountimg.App
             // 
             // cbCustomer
             // 
+            this.cbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomer.FormattingEnabled = true;
             this.cbCustomer.Location = new System.Drawing.Point(64, 16);
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(169, 24);
             this.cbCustomer.TabIndex = 5;
+            this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
             // 
             // txtFromDate
             // 
