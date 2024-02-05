@@ -142,9 +142,10 @@ namespace Accountimg.App
                         item.Cells[4].Value.ToString()
                     ); 
             }
-            {
 
-            }
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT",dtPrint);
+            stiPrint.Show();
         }
     }
 }
