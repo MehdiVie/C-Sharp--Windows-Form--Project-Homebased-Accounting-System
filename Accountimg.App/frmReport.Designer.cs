@@ -48,6 +48,7 @@ namespace Accountimg.App
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stiPrint = new Stimulsoft.Report.StiReport();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
@@ -109,6 +110,7 @@ namespace Accountimg.App
             this.btnPrintTransaction.Size = new System.Drawing.Size(78, 94);
             this.btnPrintTransaction.Text = "Print";
             this.btnPrintTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrintTransaction.Click += new System.EventHandler(this.btnPrintTransaction_Click);
             // 
             // groupBox1
             // 
@@ -143,7 +145,6 @@ namespace Accountimg.App
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.Size = new System.Drawing.Size(100, 23);
             this.txtToDate.TabIndex = 7;
-            
             // 
             // label3
             // 
@@ -162,7 +163,6 @@ namespace Accountimg.App
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(169, 24);
             this.cbCustomer.TabIndex = 5;
-            
             // 
             // txtFromDate
             // 
@@ -251,6 +251,27 @@ namespace Accountimg.App
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // stiPrint
+            // 
+            this.stiPrint.CookieContainer = null;
+            this.stiPrint.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiPrint.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiPrint.ReportAlias = "Report";
+            this.stiPrint.ReportGuid = "af5c3d0d4ab8436d8a0988037163ad94";
+            this.stiPrint.ReportName = "Report";
+            this.stiPrint.ReportSource = null;
+            this.stiPrint.ReportUnit = Stimulsoft.Report.StiReportUnitType.Centimeters;
+            this.stiPrint.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiPrint.UseProgressInThread = false;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -294,5 +315,6 @@ namespace Accountimg.App
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private Stimulsoft.Report.StiReport stiPrint;
     }
 }

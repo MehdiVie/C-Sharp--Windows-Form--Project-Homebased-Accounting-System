@@ -33,6 +33,7 @@ namespace Accountimg.App
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.loginSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewTransaction = new System.Windows.Forms.ToolStripButton();
@@ -43,7 +44,6 @@ namespace Accountimg.App
             this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.loginSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,6 +72,13 @@ namespace Accountimg.App
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(80, 24);
             this.toolStripDropDownButton1.Text = "Settings";
+            // 
+            // loginSettingToolStripMenuItem
+            // 
+            this.loginSettingToolStripMenuItem.Name = "loginSettingToolStripMenuItem";
+            this.loginSettingToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.loginSettingToolStripMenuItem.Text = "Login Setting";
+            this.loginSettingToolStripMenuItem.Click += new System.EventHandler(this.loginSettingToolStripMenuItem_Click);
             // 
             // toolStrip2
             // 
@@ -172,13 +179,6 @@ namespace Accountimg.App
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // loginSettingToolStripMenuItem
-            // 
-            this.loginSettingToolStripMenuItem.Name = "loginSettingToolStripMenuItem";
-            this.loginSettingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.loginSettingToolStripMenuItem.Text = "Login Setting";
-            this.loginSettingToolStripMenuItem.Click += new System.EventHandler(this.loginSettingToolStripMenuItem_Click);
             // 
             // Form1
             // 

@@ -51,9 +51,10 @@ namespace Accountimg.App
                     }
                     else
                     {
-                        var auth = db.AuthRepository.Get(a => a.Username == txtUsername.Text && a.Password == txtPassword.Text).First();
-                        if (auth != null)
+                        
+                        if (db.AuthRepository.Get(a => a.Username == txtUsername.Text && a.Password == txtPassword.Text).Any())
                         {
+                            var auth = db.AuthRepository.Get(a => a.Username == txtUsername.Text && a.Password == txtPassword.Text).First();
                             Form1.userId = auth.LoginID;
                             DialogResult = DialogResult.OK;
                         }
