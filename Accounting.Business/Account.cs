@@ -15,7 +15,22 @@ namespace Accounting.Business
             AccountingViewModel view = new AccountingViewModel();
 
             DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 01);
-            DateTime endDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 31);
+            DateTime endDate;
+            try
+            {
+                endDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 31);
+            }
+            catch (Exception e)
+            {
+                try
+                {
+                    endDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 30);
+                }
+                catch (Exception f)
+                {
+                    endDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 29);
+                }
+            }
 
             using (UnitOfWork db = new UnitOfWork())
             {
