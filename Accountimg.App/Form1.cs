@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Accounting.Business;
+using Accounting.ViewModels.Accounting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,11 +32,20 @@ namespace Accountimg.App
                 this.Show();
                 lblDate.Text = DateTime.Now.ToLongDateString();
                 lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+
+                Report();
             }
             else
             {
                  Application.Exit();
             }
+        }
+        void Report()
+        {
+            AccountingViewModel report = Account.ReportForm();
+            lblIncomes.Text = report.Incomes.ToString();
+            lblExpenses.Text = report.Expenses.ToString();
+            lblBalance.Text = report.Balance.ToString();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
