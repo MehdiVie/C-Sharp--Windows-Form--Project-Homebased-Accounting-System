@@ -33,7 +33,7 @@ namespace Accountimg.App
             }
             else
             {
-                Application.Exit();
+                 Application.Exit();
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
